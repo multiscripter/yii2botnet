@@ -1,0 +1,34 @@
+{
+    "name": "Database Exception",
+    "message": "SQLSTATE[HY000]: General error: 1364 Field 'firstname' doesn't have a default value\nThe SQL being executed was: INSERT INTO `persons` (`id`) VALUES (DEFAULT)",
+    "code": 0,
+    "type": "yii\\db\\Exception",
+    "file": "F:\\web\\yii2\\vendor\\yiisoft\\yii2\\db\\Schema.php",
+    "line": 674,
+    "stack-trace": ["#0 F:\\web\\yii2\\vendor\\yiisoft\\yii2\\db\\Command.php(1294): yii\\db\\Schema->convertException(Object(PDOException), 'INSERT INTO `pe...')", "#1 F:\\web\\yii2\\vendor\\yiisoft\\yii2\\db\\Command.php(1090): yii\\db\\Command->internalExecute('INSERT INTO `pe...')", "#2 F:\\web\\yii2\\vendor\\yiisoft\\yii2\\db\\Schema.php(432): yii\\db\\Command->execute()", "#3 F:\\web\\yii2\\vendor\\yiisoft\\yii2\\db\\ActiveRecord.php(600): yii\\db\\Schema->insert('persons', Array)", "#4 F:\\web\\yii2\\vendor\\yiisoft\\yii2\\db\\ActiveRecord.php(566): yii\\db\\ActiveRecord->insertInternal(NULL)", "#5 F:\\web\\yii2\\vendor\\yiisoft\\yii2\\db\\BaseActiveRecord.php(678): yii\\db\\ActiveRecord->insert(true, NULL)", "#6 F:\\web\\yii2\\controllers\\PeopleController.php(60): yii\\db\\BaseActiveRecord->save()", "#7 [internal function]: app\\controllers\\PeopleController->actionMake()", "#8 F:\\web\\yii2\\vendor\\yiisoft\\yii2\\base\\InlineAction.php(57): call_user_func_array(Array, Array)", "#9 F:\\web\\yii2\\vendor\\yiisoft\\yii2\\base\\Controller.php(157): yii\\base\\InlineAction->runWithParams(Array)", "#10 F:\\web\\yii2\\vendor\\yiisoft\\yii2\\base\\Module.php(528): yii\\base\\Controller->runAction('make', Array)", "#11 F:\\web\\yii2\\vendor\\yiisoft\\yii2\\web\\Application.php(103): yii\\base\\Module->runAction('people/make', Array)", "#12 F:\\web\\yii2\\vendor\\yiisoft\\yii2\\base\\Application.php(386): yii\\web\\Application->handleRequest(Object(yii\\web\\Request))", "#13 F:\\web\\yii2\\web\\index.php(18): yii\\base\\Application->run()", "#14 {main}"],
+    "error-info": ["HY000", 1364, "Field 'firstname' doesn't have a default value"],
+    "previous": {
+        "name": "Exception",
+        "message": "SQLSTATE[HY000]: General error: 1364 Field 'firstname' doesn't have a default value",
+        "code": "HY000",
+        "type": "PDOException",
+        "file": "F:\\web\\yii2\\vendor\\yiisoft\\yii2\\db\\Command.php",
+        "line": 1289,
+        "stack-trace": [
+"#0 F:\\web\\yii2\\vendor\\yiisoft\\yii2\\db\\Command.php(1289): PDOStatement->execute()",
+"#1 F:\\web\\yii2\\vendor\\yiisoft\\yii2\\db\\Command.php(1090): yii\\db\\Command->internalExecute('INSERT INTO `pe...')",
+"#2 F:\\web\\yii2\\vendor\\yiisoft\\yii2\\db\\Schema.php(432): yii\\db\\Command->execute()",
+"#3 F:\\web\\yii2\\vendor\\yiisoft\\yii2\\db\\ActiveRecord.php(600): yii\\db\\Schema->insert('persons', Array)",
+"#4 F:\\web\\yii2\\vendor\\yiisoft\\yii2\\db\\ActiveRecord.php(566): yii\\db\\ActiveRecord->insertInternal(NULL)",
+"#5 F:\\web\\yii2\\vendor\\yiisoft\\yii2\\db\\BaseActiveRecord.php(678): yii\\db\\ActiveRecord->insert(true, NULL)",
+"#6 F:\\web\\yii2\\controllers\\PeopleController.php(60): yii\\db\\BaseActiveRecord->save()",
+"#7 [internal function]: app\\controllers\\PeopleController->actionMake()",
+"#8 F:\\web\\yii2\\vendor\\yiisoft\\yii2\\base\\InlineAction.php(57): call_user_func_array(Array, Array)",
+"#9 F:\\web\\yii2\\vendor\\yiisoft\\yii2\\base\\Controller.php(157): yii\\base\\InlineAction->runWithParams(Array)",
+"#10 F:\\web\\yii2\\vendor\\yiisoft\\yii2\\base\\Module.php(528): yii\\base\\Controller->runAction('make', Array)",
+"#11 F:\\web\\yii2\\vendor\\yiisoft\\yii2\\web\\Application.php(103): yii\\base\\Module->runAction('people/make', Array)",
+#12 F:\\web\\yii2\\vendor\\yiisoft\\yii2\\base\\Application.php(386): yii\\web\\Application->handleRequest(Object(yii\\web\\Request))",
+"#13 F:\\web\\yii2\\web\\index.php(18): yii\\base\\Application->run()",
+"#14 {main}"]
+    }
+}
