@@ -3,7 +3,6 @@
 namespace app\App\Event\Handler;
 
 use app\App\Event\EventList;
-use Yii;
 use yii\base\Event;
 
 /**
@@ -27,6 +26,6 @@ class UserTryToCloseTabHandler implements IHandler
      */
     function handle(Event $event)
     {
-        Yii::info('Пользователь попытался закрыть вкладку');
+        //Yii::info('Пользователь попытался закрыть вкладку');
     }
 }

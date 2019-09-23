@@ -6,14 +6,13 @@ $db = require __DIR__ . '/db.php';
 $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
+    'aliases' => [
+        '@bower' => '@vendor/bower-asset',
+        '@npm'   => '@vendor/npm-asset'
+    ],
     'bootstrap' => [
         'dispatcher',
         'log'
-    ],
-    'aliases' => [
-        '@bower' => '@vendor/bower-asset',
-        '@npm'   => '@vendor/npm-asset',
-        '@logs'  => DIRECTORY_SEPARATOR.'runtime'.DIRECTORY_SEPARATOR.'logs'
     ],
     'components' => [
         'request' => [
@@ -40,16 +39,6 @@ $config = [
             // 'useFileTransport' to false and configure a transport
             // for the mailer to send real emails.
             'useFileTransport' => true,
-        ],
-        'log' => [
-            'traceLevel' => YII_DEBUG ? 3 : 0,
-            'targets' => [
-                [
-                    'class' => 'yii\log\FileTarget',
-                    // Уровень debug задать нельзя.
-                    'levels' => ['info', 'error', 'warning'],
-                ],
-            ],
         ],
         'db' => $db,
         'urlManager' => [
@@ -87,7 +76,21 @@ $config = [
         ],
         'dispatcher' => [
             'class' => 'app\App\Event\Dispatcher'
-        ]
+        ],
+        'log' => [
+            'traceLevel' => YII_DEBUG ? 3 : 0,
+            'flushInterval' => 1,
+            'targets' => [
+                [
+                    'categories' => ['events'],
+                    'class' => 'yii\log\FileTarget',
+                    'exportInterval' => 1,
+                    'levels' => ['info', 'warning', 'error'],
+                    'logFile' => '@logs/web/events.log',
+                    'logVars' => []
+                ],
+            ],
+        ],
     ],
     'params' => $params,
 ];

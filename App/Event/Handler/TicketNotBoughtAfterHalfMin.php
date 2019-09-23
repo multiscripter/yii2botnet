@@ -3,7 +3,6 @@
 namespace app\App\Event\Handler;
 
 use app\App\Event\EventList;
-use Yii;
 use yii\base\Event;
 
 /**
@@ -27,6 +26,6 @@ class TicketNotBoughtAfterHalfMin implements IHandler
      */
     function handle(Event $event)
     {
-        Yii::info('Пользователь не купил билет спустя 30 секунд нахождения на сайте.');
+        //Yii::info('Пользователь не купил билет спустя 30 секунд нахожденияна сайте.');
     }
 }

@@ -3,7 +3,6 @@
 namespace app\App\Event\Handler;
 
 use app\App\Event\EventList;
-use Yii;
 use yii\base\Event;
 
 /**
@@ -27,6 +26,6 @@ class PaymentExpiredHandler implements IHandler
      */
     function handle(Event $event)
     {
-        Yii::info('Время, отведённое для оплаты, вышло');
+        //Yii::info('Время, отведённое для оплаты, вышло');
     }
 }

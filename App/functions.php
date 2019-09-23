@@ -7,8 +7,7 @@ use yii\BaseYii;
  * @param string $logLocalFileName лькальное имя лог-файла.
  */
 function dump2log($arg, $logLocalFileName = '') {
-    $path = BaseYii::getAlias('@app');
-    $path .= BaseYii::getAlias('@logs');
+    $path = BaseYii::getAlias('@logs');
     $path .= DIRECTORY_SEPARATOR.$logLocalFileName;
     $dt = new DateTime();
     ob_start();

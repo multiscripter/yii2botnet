@@ -4,7 +4,6 @@ namespace app\App\Event\Handler;
 
 use app\App\Event\EventList;
 use app\models\Person;
-use Yii;
 use yii\base\Event;
 
 /**
@@ -30,7 +29,6 @@ class RequestPasswordHandler implements IHandler
     {
         /** @var Person $user */
         $user = $event->sender;
-        dump2log($user->username, 'debug.log');
-        Yii::info('Пользователь '.$user->name .' запросил смену пароля');
+        //Yii::info('Пользователь '.$user->name .' запросил смену пароля');
     }
 }

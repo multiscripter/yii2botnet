@@ -4,7 +4,6 @@ namespace app\App\Event\Handler;
 
 use app\App\Event\EventList;
 use App\Models\User;
-use Yii;
 use yii\base\Event;
 
 /**
@@ -30,6 +29,6 @@ class PurchaseTicketBusinessHandler implements IHandler
     {
         /** @var User $user */
         $user = $event->sender;
-        Yii::info('Пользователь '.$user->name .' купил билет BUSINESS.');
+        //Yii::info('Пользователь '.$user->name .' купил билет BUSINESS.');
     }
 }

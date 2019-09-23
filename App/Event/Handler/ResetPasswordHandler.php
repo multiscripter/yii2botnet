@@ -4,11 +4,7 @@ namespace app\App\Event\Handler;
 
 use app\App\Event\EventList;
 use app\models\Person;
-use Yii;
 use yii\base\Event;
-
-require_once \yii\BaseYii::getAlias('@app').DIRECTORY_SEPARATOR
-        .'/App/functions.php';
 
 /**
  * Class ResetPasswordHandler обрабатывает событие сброса пароля.
@@ -33,7 +29,6 @@ class ResetPasswordHandler implements IHandler
     {
         /** @var Person $user */
         $user = $event->sender;
-        dump2log($user->username, 'debug.log');
-        Yii::info('Пользователь '.$user->username .' инициировал сброс пароля');
+        //Yii::info('Пользователь '.$user->username .' инициировал сброспароля');
     }
 }

@@ -6,7 +6,10 @@ $db = require __DIR__ . '/db.php';
 $config = [
     'id' => 'basic-console',
     'basePath' => dirname(__DIR__),
-    'bootstrap' => ['log'],
+    'bootstrap' => [
+        'dispatcher',
+        'log'
+    ],
     'controllerNamespace' => 'app\commands',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
@@ -17,15 +20,27 @@ $config = [
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
+        'db' => $db,
+        'dispatcher' => [
+            'class' => 'app\App\Event\Dispatcher'
+        ],
+        'user' => [
+            'identityClass' => 'app\models\User',
+        ],
         'log' => [
+            'traceLevel' => YII_DEBUG ? 3 : 0,
+            'flushInterval' => 1,
             'targets' => [
                 [
+                    'categories' => ['events'],
                     'class' => 'yii\log\FileTarget',
-                    'levels' => ['error', 'warning'],
+                    'exportInterval' => 1,
+                    'levels' => ['info', 'warning', 'error'],
+                    'logFile' => '@logs/tests/events.log',
+                    'logVars' => []
                 ],
             ],
         ],
-        'db' => $db,
     ],
     'params' => $params,
     /*
@@ -39,6 +54,7 @@ $config = [
 
 if (YII_ENV_DEV) {
     // configuration adjustments for 'dev' environment
+    $config['bootstrap'][] = 'debug';
     $config['bootstrap'][] = 'gii';
     $config['modules']['gii'] = [
         'class' => 'yii\gii\Module',

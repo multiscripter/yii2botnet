@@ -3,7 +3,6 @@
 namespace app\App\Event\Handler;
 
 use app\App\Event\EventList;
-use Yii;
 use yii\base\Event;
 
 /**
@@ -27,6 +26,6 @@ class OneDayTillPriceRiseHandler implements IHandler
      */
     function handle(Event $event)
     {
-        Yii::info('Цены на сайте поднимаются через 24 часа');
+        //Yii::info('Цены на сайте поднимаются через 24 часа');
     }
 }

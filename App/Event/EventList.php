@@ -6,7 +6,7 @@ namespace app\App\Event;
  */
 class EventList {
     const EVENT_FOR_OWNER_TICKET_BUSINESS  = 'ForOwnerTicketBusiness';
-    const EVENT_FOR_OWNER_TICKET_PRE_PARTY = 'ForOwnerTicketPreParty';
+    /*const EVENT_FOR_OWNER_TICKET_PRE_PARTY = 'ForOwnerTicketPreParty';
     const EVENT_FOR_OWNER_TICKET_STANDARD  = 'ForOwnerTicketStandard';
     const EVENT_FOR_OWNER_TICKET_VIP       = 'ForOwnerTicketVip';
     const EVENT_MASS_MAILING_OFFER         = 'MassMailingOffer';
@@ -23,5 +23,5 @@ class EventList {
     const EVENT_TICKET_NOT_BOUGHT_30SEC    = 'TicketNotBoughtAfter30Sec';
     const EVENT_USER_CLOSE_DURING_ENTERING = 'UserCloseDuringEnteringData';
     const EVENT_USER_TRY_TO_CLOSE_TAB      = 'UserTryToCloseTab';
-    const EVENT_USER_REGISTERED            = 'UserRegistered';
+    const EVENT_USER_REGISTERED            = 'UserRegistered';*/
 }

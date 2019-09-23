@@ -3,7 +3,6 @@
 namespace app\App\Event\Handler;
 
 use app\App\Event\EventList;
-use Yii;
 use yii\base\Event;
 
 /**
@@ -28,6 +27,6 @@ class UserCloseDuringEnteringHandler implements IHandler
      */
     function handle(Event $event)
     {
-        Yii::info('Пользователь закрыл форму во время ввода данных');
+        //Yii::info('Пользователь закрыл форму во время ввода данных');
     }
 }

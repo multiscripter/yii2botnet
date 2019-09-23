@@ -40,7 +40,7 @@ class Dispatcher extends Component {
             [new ForOwnerTicketBusinessHandler(), 'handle']
         );
 
-        Event::on(Person::class,
+        /*Event::on(Person::class,
             EventList::EVENT_FOR_OWNER_TICKET_PRE_PARTY,
             [new ForOwnerTicketPrePartyHandler(), 'handle']
         );
@@ -128,6 +128,6 @@ class Dispatcher extends Component {
         Event::on(Person::class,
             EventList::EVENT_USER_TRY_TO_CLOSE_TAB,
             [new UserTryToCloseTabHandler(), 'handle']
-        );
+        );*/
     }
 }

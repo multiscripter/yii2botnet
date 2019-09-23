@@ -1,10 +1,12 @@
 <?php
+include __DIR__.'/../../App/functions.php';
 
 use app\App\Event\EventList;
 use app\models\Person;
 use Codeception\Test\Unit;
-use yii\BaseYii;
+//use yii\BaseYii;
 use yii\base\Event;
+use yii\log\Logger;
 
 class EventHandlerTest extends Unit
 {
@@ -12,8 +14,6 @@ class EventHandlerTest extends Unit
      * @var \UnitTester
      */
     protected $tester;
-
-    private $file;
 
     protected function _before()
     {
@@ -27,36 +27,29 @@ class EventHandlerTest extends Unit
      * Метод с тестом должен быть один и в нём много assertion-вызовов.
      * Тестирует события app\App\Event\Handler.
      */
-    public function testCustomTestingEventHandlers()
+    public function testTestingCustomEventHandlers()
     {
-        $user = new Person();
-        $message1 = time();
-        $eventName = EventList::EVENT_FOR_OWNER_TICKET_BUSINESS;
-        $message1 .= '|'.$eventName;
-        $user->username = $message1;
-        $event = new Event([
-            'name' => $eventName,
-            'sender' => $user
-        ]);
-        $user->trigger($eventName, $event);
+        dump2log('testTestingCustomEventHandlers', 'common.log');
+        $cls = new ReflectionClass(EventList::class);
+        $events = $cls->getConstants();
+        $messages = [];
+        foreach ($events as $eventConst) {
+            $person = new Person();
+            $message = time();
+            $message .= '-'.$eventConst;
+            $person->username = $message;
+            $event = new Event([
+                'name' => $eventConst,
+                'sender' => $person
+            ]);
+            $messages[] = $message;
+            $person->trigger($eventConst, $event);
+        }
 
-        $user = new Person();
-        $message2 = time();
-        $eventName = EventList::EVENT_RESET_PASSWORD;
-        $message2 .= '|'.$eventName;
-        $user->username = $message2;
-        $event = new Event([
-            'name' => $eventName,
-            'sender' => $user
-        ]);
-        $user->trigger($eventName, $event);
-
-        $path = BaseYii::getAlias('@app');
-        $path .= BaseYii::getAlias('@logs');
-        $path .= DIRECTORY_SEPARATOR.'debug.log';
-        $this->file = file_get_contents($path);
-
-        $this->assertTrue(preg_match("/$message1/", $this->file) === 1);
-        $this->assertTrue(preg_match("/$message2/", $this->file) === 1);
+        $log = Yii::$app->getLog();
+        $logFile = file_get_contents($log->targets[0]->logFile);
+        foreach ($messages as $message) {
+            $this->assertTrue(preg_match("/$message/", $logFile) === 1);
+        }
     }
 }

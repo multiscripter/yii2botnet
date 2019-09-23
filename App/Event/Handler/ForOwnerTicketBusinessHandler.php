@@ -6,9 +6,7 @@ use app\App\Event\EventList;
 use app\models\Person;
 use Yii;
 use yii\base\Event;
-
-require_once \yii\BaseYii::getAlias('@app').DIRECTORY_SEPARATOR
-        .'/App/functions.php';
+use yii\log\Logger;
 
 /**
  * Class ForOwnerTicketBusinessHandler обрабатывает событие Для купивших
@@ -34,14 +32,7 @@ class ForOwnerTicketBusinessHandler implements IHandler
     {
         /** @var Person $user */
         $user = $event->sender;
-        dump2log($user->username, 'debug.log');
-        // Пишет в /runtime/debug/*.data.
-        Yii::debug($user->username.'_debug2');
-        // Пишет в /runtime/debug/*.data.
-        Yii::info($user->username.'_info2');
-        // Пишет в /runtime/debug/*.data и /runtime/logs/app.log.
-        Yii::warning($user->username.'_warning2');
-        // Пишет в /runtime/debug/*.data и /runtime/logs/app.log.
-        Yii::error($user->username.'_error2');
+        $message = $user->username.' Для купивших билет BUSINESS';
+        Yii::$app->getLog()->logger->log($message, Logger::LEVEL_ERROR,'events');
     }
 }
