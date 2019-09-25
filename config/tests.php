@@ -38,7 +38,7 @@ $configTests = [
             'showScriptName' => true,
         ]
     ],
-    'id' => 'basic-tests',
+    'id' => 'tests',
     'language' => 'en-US'
 ];
 

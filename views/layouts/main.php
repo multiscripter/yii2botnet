@@ -69,7 +69,10 @@ $this->beginPage();
 <footer class="footer">
     <div class="container">
         <p class="pull-left">&copy; Круши, ломай, воруй, убивай! <?= date('Y') ?></p>
-        <p class="pull-right"><?= Yii::powered() ?></p>
+        <p class="pull-right">
+            <a href="https://github.com/multiscripter"
+               rel="external" target="_blank">Multiscripter</a>
+        </p>
     </div>
 </footer>
 

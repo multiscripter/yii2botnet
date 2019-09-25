@@ -30,7 +30,8 @@ $configConsole = [
         ]
     ],
     'controllerNamespace' => 'app\controllers\console',
-    'id' => 'console-app'
+    'id' => 'console-app',
+    'name' => 'console-upyachka'
 ];
 
 if (YII_ENV_DEV) {

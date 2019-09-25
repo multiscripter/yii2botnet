@@ -1,19 +1,7 @@
 <?php
+$common = require __DIR__.'/common.php';
 
-$params = require __DIR__ . '/params.php';
-$db = require __DIR__ . '/db.php';
-
-$config = [
-    'id' => 'basic-web',
-    'basePath' => dirname(__DIR__),
-    'aliases' => [
-        '@bower' => '@vendor/bower-asset',
-        '@npm'   => '@vendor/npm-asset'
-    ],
-    'bootstrap' => [
-        'dispatcher',
-        'log'
-    ],
+$configWeb = [
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
@@ -27,7 +15,6 @@ $config = [
             'class' => 'yii\caching\FileCache',
         ],
         'user' => [
-            'identityClass' => 'app\models\User',
             'enableAutoLogin' => true,
         ],
         'errorHandler' => [
@@ -40,12 +27,7 @@ $config = [
             // for the mailer to send real emails.
             'useFileTransport' => true,
         ],
-        'db' => $db,
         'urlManager' => [
-            'enablePrettyUrl' => true,
-            'showScriptName' => false,
-            // Обрабатывать только URL со слэшем в конце.
-            'suffix' => '/',
             'rules' => [
 // ВНИМАНИЕ! Yii2 не понимает слэш в конце имени ключей в массиве rules !!!.
 // То есть 'person/' => '. . .' не работает.
@@ -74,12 +56,7 @@ $config = [
                 ]
             ],
         ],
-        'dispatcher' => [
-            'class' => 'app\App\Event\Dispatcher'
-        ],
         'log' => [
-            'traceLevel' => YII_DEBUG ? 3 : 0,
-            'flushInterval' => 1,
             'targets' => [
                 [
                     'categories' => ['events'],
@@ -92,14 +69,12 @@ $config = [
             ],
         ],
     ],
-    'params' => $params,
+    'id' => 'web-app',
+    'name' => 'Web-upyachka'
 ];
 
 if (YII_ENV_DEV) {
-    // configuration adjustments for 'dev' environment
-    $config['bootstrap'][] = 'debug';
     $config['modules']['debug'] = [
-        'class' => 'yii\debug\Module',
         // uncomment the following to add your IP if you are not connecting from localhost.
         //'allowedIPs' => ['127.0.0.1', '::1'],
     ];
@@ -112,4 +87,4 @@ if (YII_ENV_DEV) {
     ];
 }
 
-return $config;
+return array_merge_recursive($common, $configWeb);

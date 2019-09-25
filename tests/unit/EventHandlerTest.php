@@ -4,9 +4,7 @@ include __DIR__.'/../../App/functions.php';
 use app\App\Event\EventList;
 use app\models\Person;
 use Codeception\Test\Unit;
-//use yii\BaseYii;
 use yii\base\Event;
-use yii\log\Logger;
 
 class EventHandlerTest extends Unit
 {

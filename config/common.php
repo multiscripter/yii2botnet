@@ -29,8 +29,8 @@ $config = [
             'suffix' => '/'
         ],
         'user' => [
-            'identityClass' => 'app\models\User',
-            'class' => 'app\model\User'
+            'identityClass' => 'yii\web\User',
+            'class' => 'yii\web\User'
         ]
     ],
     'params' => $params,
