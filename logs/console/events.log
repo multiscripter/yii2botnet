@@ -1,3 +1,0 @@
-2019-09-25 21:50:44 [-][-][-][error][events]  Для купивших билет BUSINESS
-    in F:\web\yii2\App\Event\Handler\ForOwnerTicketBusinessHandler.php:36
-    in F:\web\yii2\controllers\console\EventController.php:28

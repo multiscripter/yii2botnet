@@ -7,14 +7,14 @@ use app\models\Person;
 use yii\console\Controller;
 
 /**
- * Class EventController контролирует события.
+ * Class EventController контролирует события, возбуждаемые обращением в консоли.
  * @package app\controllers\console
  */
 class EventController extends Controller
 {
     /**
-     * Возбуждает событие.
-     * @param $eventName string имя события.
+     * Возбуждает указанное событие.
+     * @param $eventName string значение константы события.
      * @return int статус.
      */
     public function actionTrigger($eventName)

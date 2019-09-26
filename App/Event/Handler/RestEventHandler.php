@@ -3,14 +3,17 @@
 namespace app\App\Event\Handler;
 
 use app\App\Event\EventList;
-use App\Models\User;
+use app\models\Person;
+use Yii;
 use yii\base\Event;
+use yii\log\Logger;
 
 /**
- * Class PurchaseTicketHandler обрабатывает событие "Юзер купил билет".
+ * Class ForOwnerTicketBusinessHandler обрабатывает событие Для купивших
+ * билет BUSINESS.
  * @package App\Event\Handler
  */
-class PurchaseTicketHandler implements IHandler
+class RestEventHandler implements IHandler
 {
     /**
      * Получает константу события.
@@ -18,7 +21,7 @@ class PurchaseTicketHandler implements IHandler
      */
     function getEvent()
     {
-        return EventList::EVENT_PURCHASE_TICKET;
+        return EventList::EVENT_REST;
     }
 
     /**
@@ -27,8 +30,9 @@ class PurchaseTicketHandler implements IHandler
      */
     function handle(Event $event)
     {
-        /** @var User $user */
+        /** @var Person $user */
         $user = $event->sender;
-        //Yii::info('Пользователь '.$user->name .' купил билет.');
+        $message = $user->username.' возбудил событие REST';
+        Yii::$app->getLog()->logger->log($message, Logger::LEVEL_ERROR,'events');
     }
 }

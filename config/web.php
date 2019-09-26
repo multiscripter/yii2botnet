@@ -47,13 +47,14 @@ $configWeb = [
 
 // URI вида /person/update/{id}/ обрабатывает PeopleController.actionModify();
                 'PUT person/update/<id:\d+>' => 'people/modify',
+// URI вида /event/trigger/eventconstantvalue/
+                'GET event/trigger/<name:>' => 'event/trigger',
 
                 [
                     'class' => 'yii\rest\UrlRule',
                     //отключение преобразования во множественную форму
-                    //'pluralize' => false,
                     'controller' => 'people'
-                ]
+                ],
             ],
         ],
         'log' => [

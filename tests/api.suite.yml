@@ -1,0 +1,14 @@
+# RUN `build` COMMAND AFTER ADDING/REMOVING MODULES.
+
+actor: ApiTester
+class_name: ApiTester
+modules:
+    enabled:
+        - PhpBrowser:
+            url: http://yii2.bot.net
+            curl:
+                CURLOPT_RETURNTRANSFER: true
+        - REST:
+            url: http://yii2.bot.net
+            depends: PhpBrowser
+            part: Json

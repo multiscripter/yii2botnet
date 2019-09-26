@@ -6,8 +6,8 @@ paths:
     helpers: tests/_support
 
 settings:
-# Для этой версии Codeseption
-# иснтрукци bootstrap: _bootstrap.php должна быть вложена в settings:
+# Для этой версии Codeseption иснтрукция bootstrap: _bootstrap.php
+# должна быть вложена в settings:
     bootstrap: _bootstrap.php
     memory_limit: 1024M
     colors: true
