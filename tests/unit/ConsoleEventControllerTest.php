@@ -43,7 +43,7 @@ class ConsoleEventControllerTest extends Unit
 
     public function testConsoleCallOfTriggerReturnsZero()
     {
-        $cmd = 'php yii event/trigger '.EventList::EVENT_FOR_OWNER_TICKET_BUSINESS;
+        $cmd = 'php yii event/trigger '.EventList::FOR_OWNER_TICKET_BUSINESS;
         $this->module->runShellCommand($cmd);
         $this->module->seeResultCodeIs(0);
     }
@@ -51,7 +51,7 @@ class ConsoleEventControllerTest extends Unit
     public function testExplicitCallOfTriggerReturnsZero()
     {
         $ctrl = new EventController('FakeId', $this->module);
-        $actual = $ctrl->actionTrigger(EventList::EVENT_FOR_OWNER_TICKET_BUSINESS);
+        $actual = $ctrl->actionTrigger(EventList::FOR_OWNER_TICKET_BUSINESS);
         $this->tester->assertEquals(0, $actual);
     }
 

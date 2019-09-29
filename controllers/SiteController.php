@@ -66,7 +66,7 @@ class SiteController extends Controller
     {
         //$person =  new Person();
         //$person->username = 'SiteController.actionIndex()';
-        //$person->trigger(EventList::EVENT_FOR_OWNER_TICKET_BUSINESS);
+        //$person->trigger(EventList::FOR_OWNER_TICKET_BUSINESS);
         return $this->render('index');
     }
 

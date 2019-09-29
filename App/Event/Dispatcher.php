@@ -3,6 +3,7 @@
 namespace app\App\Event;
 
 use app\App\Event\Handler\ForOwnerTicketBusinessHandler;
+use app\App\Event\Handler\MailEventHandler;
 use app\App\Event\Handler\RestEventHandler;
 use app\models\Person;
 use yii\base\Component;
@@ -21,11 +22,15 @@ class Dispatcher extends Component
     {
         parent::init();
         Event::on(Person::class,
-            EventList::EVENT_FOR_OWNER_TICKET_BUSINESS,
+            EventList::FOR_OWNER_TICKET_BUSINESS,
             [new ForOwnerTicketBusinessHandler(), 'handle']
         );
         Event::on(Person::class,
-            EventList::EVENT_REST,
+            EventList::MAIL,
+            [new MailEventHandler(), 'handle']
+        );
+        Event::on(Person::class,
+            EventList::REST,
             [new RestEventHandler(), 'handle']
         );
     }

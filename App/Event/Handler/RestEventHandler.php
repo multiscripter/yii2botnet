@@ -21,7 +21,7 @@ class RestEventHandler implements IHandler
      */
     function getEvent()
     {
-        return EventList::EVENT_REST;
+        return EventList::REST;
     }
 
     /**
@@ -32,7 +32,9 @@ class RestEventHandler implements IHandler
     {
         /** @var Person $user */
         $user = $event->sender;
-        $message = $user->username.' возбудил событие REST';
+        $message = $user->firstname;
+        $message .= ' ' . $user->lastname;
+        $message .= ' возбудил событие REST';
         Yii::$app->getLog()->logger->log($message, Logger::LEVEL_ERROR,'events');
     }
 }

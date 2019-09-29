@@ -7,6 +7,7 @@ namespace app\App\Event;
  */
 class EventList
 {
-    const EVENT_FOR_OWNER_TICKET_BUSINESS  = 'ForOwnerTicketBusiness';
-    const EVENT_REST                       = 'REST';
+    const FOR_OWNER_TICKET_BUSINESS  = 'ForOwnerTicketBusiness';
+    const MAIL                       = 'mail';
+    const REST                       = 'REST';
 }

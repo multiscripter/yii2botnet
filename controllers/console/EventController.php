@@ -21,11 +21,11 @@ class EventController extends Controller
     {
         $person = new Person();
         $person->id = 0;
-        $person->username = '';
+        $person->firstname = '';
         $status = 0;
         switch ($eventName) {
-            case EventList::EVENT_FOR_OWNER_TICKET_BUSINESS:
-                $person->trigger(EventList::EVENT_FOR_OWNER_TICKET_BUSINESS);
+            case EventList::FOR_OWNER_TICKET_BUSINESS:
+                $person->trigger(EventList::FOR_OWNER_TICKET_BUSINESS);
                 break;
             default:
                 $status = 1;

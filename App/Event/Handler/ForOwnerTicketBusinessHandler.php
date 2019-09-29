@@ -21,7 +21,7 @@ class ForOwnerTicketBusinessHandler implements IHandler
      */
     function getEvent()
     {
-        return EventList::EVENT_FOR_OWNER_TICKET_BUSINESS;
+        return EventList::FOR_OWNER_TICKET_BUSINESS;
     }
 
     /**
@@ -32,7 +32,9 @@ class ForOwnerTicketBusinessHandler implements IHandler
     {
         /** @var Person $user */
         $user = $event->sender;
-        $message = $user->username.' Для купивших билет BUSINESS';
+        $message = $user->firstname;
+        $message .= ' ' . $user->lastname;
+        $message .= ' Для купивших билет BUSINESS';
         Yii::$app->getLog()->logger->log($message, Logger::LEVEL_ERROR,'events');
     }
 }

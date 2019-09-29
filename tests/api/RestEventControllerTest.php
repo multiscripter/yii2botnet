@@ -6,11 +6,12 @@ use Codeception\Test\Unit;
 
 /**
  * Class EventControllerTest тестирует EventController.
- * php vendor/bin/codecept run api
  * https://codeception.com/docs/10-APITesting#REST-API
  * https://codeception.com/docs/modules/REST
  * Запуск под Win из корня проекта:
  * vendor/bin/codecept.bat run api RestEventControllerTest
+ * Запуск под Linux из корня проекта:
+ * php vendor/bin/codecept run api RestEventControllerTest
  */
 class RestEventControllerTest extends Unit
 {
@@ -37,12 +38,12 @@ class RestEventControllerTest extends Unit
 
     /**
      * Тестирует public function actionTrigger($name).
-     * Принимает имя события EventList::EVENT_REST.
+     * Принимает имя события EventList::REST.
      */
     public function testTriggerTakesExistentEventName()
     {
         $uri = '/event/trigger/';
-        $uri .= EventList::EVENT_REST.'/';
+        $uri .= EventList::REST.'/';
         $this->module->sendGET($uri);
         $this->module->seeResponseContains('{"success":true}');
         //$response = $this->module->grabResponse();

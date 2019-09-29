@@ -26,8 +26,8 @@ class EventController extends Controller
         $person->id = 0;
         $person->username = '';
         switch ($name) {
-            case EventList::EVENT_REST:
-                $person->trigger(EventList::EVENT_REST);
+            case EventList::REST:
+                $person->trigger(EventList::REST);
                 break;
             default:
                 $response['success'] = false;

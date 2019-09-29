@@ -2,10 +2,20 @@
 include __DIR__.'/../../App/functions.php';
 
 use app\App\Event\EventList;
+use app\App\Event\Handler\ForOwnerTicketBusinessHandler;
+use app\App\Event\Handler\MailEventHandler;
+use app\App\Event\Handler\RestEventHandler;
 use app\models\Person;
 use Codeception\Test\Unit;
 use yii\base\Event;
 
+/**
+ * Class EventHandlerTest тестирует EventHandler.
+ * Запуск под Win из корня проекта:
+ * vendor/bin/codecept.bat run unit EventHandlerTest
+ * Запуск под Linux из корня проекта:
+ * php vendor/bin/codecept run unit EventHandlerTest
+ */
 class EventHandlerTest extends Unit
 {
     /**
@@ -27,7 +37,6 @@ class EventHandlerTest extends Unit
      */
     public function testTestingCustomEventHandlers()
     {
-        dump2log('testTestingCustomEventHandlers', 'common.log');
         $cls = new ReflectionClass(EventList::class);
         $events = $cls->getConstants();
         $messages = [];
@@ -35,7 +44,8 @@ class EventHandlerTest extends Unit
             $person = new Person();
             $message = time();
             $message .= '-'.$eventConst;
-            $person->username = $message;
+            $person->firstname = $message;
+            $person->lastname = 'FakeLastName';
             $event = new Event([
                 'name' => $eventConst,
                 'sender' => $person
@@ -49,5 +59,17 @@ class EventHandlerTest extends Unit
         foreach ($messages as $message) {
             $this->assertTrue(preg_match("/$message/", $logFile) === 1);
         }
+    }
+
+    /**
+     * Тестирует метод function getEvent().
+     */
+    public function testGetEventReturnsEventConstantValue() {
+        $eventName = (new ForOwnerTicketBusinessHandler())->getEvent();
+        $this->assertEquals(EventList::FOR_OWNER_TICKET_BUSINESS, $eventName);
+        $eventName = (new MailEventHandler())->getEvent();
+        $this->assertEquals(EventList::MAIL, $eventName);
+        $eventName = (new RestEventHandler())->getEvent();
+        $this->assertEquals(EventList::REST, $eventName);
     }
 }
